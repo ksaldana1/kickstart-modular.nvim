@@ -46,3 +46,6 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 })
 
 -- vim: ts=2 sts=2 sw=2 et
+
+vim.keymap.set({'n', 'v'}, '<S-j>', '5j', { desc = "Move 5 lines down shortcut" })
+vim.keymap.set({'n', 'v'}, '<S-k>', '5k', { desc = "Move 5 lines up shortcut" })
