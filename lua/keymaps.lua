@@ -49,3 +49,6 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 
 vim.keymap.set({ 'n', 'v' }, '<S-j>', '5j', { desc = 'Move 5 lines down shortcut' })
 vim.keymap.set({ 'n', 'v' }, '<S-k>', '5k', { desc = 'Move 5 lines up shortcut' })
+
+vim.keymap.set('i', '<C-f>', '<right>', { desc = 'Move cursor forward in insert' })
+vim.keymap.set('i', '<C-b>', '<left>', { desc = 'Move cursor forward in insert' })
