@@ -7,9 +7,9 @@ return {
       local lint = require 'lint'
       lint.linters_by_ft = {}
       lint.linters_by_ft['markdown'] = { 'markdownlint' }
-      lint.linters_by_ft['typescript'] = { 'eslint_d' }
-      lint.linters_by_ft['javascript'] = { 'eslint_d' }
-      lint.linters_by_ft['typescriptreact'] = { 'eslint_d' }
+      -- lint.linters_by_ft['typescript'] = { 'eslint_d' }
+      -- lint.linters_by_ft['javascript'] = { 'eslint_d' }
+      -- lint.linters_by_ft['typescriptreact'] = { 'eslint_d' }
 
       -- To allow other plugins to add linters to require('lint').linters_by_ft,
       -- instead set linters_by_ft like this:
