@@ -53,3 +53,6 @@ vim.keymap.set('i', '<C-f>', '<right>', { desc = 'Move cursor forward in insert'
 vim.keymap.set('i', '<C-b>', '<left>', { desc = 'Move cursor forward in insert' })
 
 -- vim: ts=2 sts=2 sw=2 et
+--
+-- Go-to preview
+vim.keymap.set("n", "gp", "<cmd>lua require('goto-preview').goto_preview_definition()<CR>", {noremap=true})
