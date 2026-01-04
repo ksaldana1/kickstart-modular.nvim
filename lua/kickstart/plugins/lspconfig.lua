@@ -84,11 +84,13 @@ return {
           -- Jump to the implementation of the word under your cursor.
           --  Useful when your language has ways of declaring types without an actual implementation.
           map('gI', require('telescope.builtin').lsp_implementations, '[G]oto [I]mplementation')
+          map('gi', require('telescope.builtin').lsp_implementations, '[G]oto [I]mplementation (lowercase)')
 
           -- Jump to the type of the word under your cursor.
           --  Useful when you're not sure what type a variable is and you want to see
           --  the definition of its *type*, not where it was *defined*.
           map('<leader>D', require('telescope.builtin').lsp_type_definitions, 'Type [D]efinition')
+          map('gy', require('telescope.builtin').lsp_type_definitions, '[G]oto T[y]pe Definition')
 
           -- Fuzzy find all the symbols in your current document.
           --  Symbols are things like variables, functions, types, etc.
@@ -105,6 +107,10 @@ return {
           -- Execute a code action, usually your cursor needs to be on top of an error
           -- or a suggestion from your LSP for this to activate.
           map('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
+          map('<leader>a', vim.lsp.buf.code_action, 'Code [A]ction (short)')
+
+          -- Quick fix
+          map('<leader>qf', vim.lsp.buf.code_action, '[Q]uick [F]ix')
 
           -- WARN: This is not Goto Definition, this is Goto Declaration.
           --  For example, in C this would take you to the header.
@@ -180,6 +186,7 @@ return {
         -- But for many setups, the LSP (`tsserver`) will work just fine
         -- tsserver = {},
         rescriptls = {},
+        tsp_server = {},
         --
 
         lua_ls = {
@@ -197,7 +204,6 @@ return {
           },
         },
       }
-      require('lspconfig').tsp_server.setup {}
 
       -- Ensure the servers and tools above are installed
       --  To check the current status of installed tools and/or manually install
@@ -223,7 +229,15 @@ return {
             -- by the server configuration above. Useful when disabling
             -- certain features of an LSP (for example, turning off formatting for tsserver)
             server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
-            require('lspconfig')[server_name].setup(server)
+
+            -- Use the new nvim 0.11+ API if available, otherwise fall back to lspconfig
+            if vim.lsp.config then
+              -- nvim 0.11+ native config
+              vim.lsp.config[server_name] = server
+            else
+              -- Fallback for older nvim versions
+              require('lspconfig')[server_name].setup(server)
+            end
           end,
         },
       }
