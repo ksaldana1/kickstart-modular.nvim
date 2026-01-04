@@ -63,4 +63,20 @@ vim.opt.cursorline = true
 vim.opt.scrolloff = 10
 
 vim.opt.termguicolors = true
+
+-- Configure diagnostics
+vim.diagnostic.config {
+  virtual_text = true, -- Show diagnostics inline at the end of lines
+  signs = true, -- Show signs in the gutter
+  underline = true, -- Underline problematic code
+  update_in_insert = false, -- Don't update diagnostics while typing
+  severity_sort = true, -- Sort by severity
+  float = {
+    border = 'rounded',
+    source = 'always', -- Show source of diagnostic (e.g., "eslint")
+    header = '',
+    prefix = '',
+  },
+}
+
 -- vim: ts=2 sts=2 sw=2 et

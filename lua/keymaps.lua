@@ -65,7 +65,8 @@ vim.keymap.set('n', '<Leader>P', '"+P', { desc = 'Paste before from system clipb
 vim.keymap.set('v', '<Leader>p', '"+p', { desc = 'Paste from system clipboard' })
 vim.keymap.set('v', '<Leader>P', '"+P', { desc = 'Paste before from system clipboard' })
 
--- Diagnostic navigation
-vim.keymap.set('n', '[c', vim.diagnostic.goto_prev, { desc = 'Go to previous diagnostic' })
-vim.keymap.set('n', ']c', vim.diagnostic.goto_next, { desc = 'Go to next diagnostic' })
+-- Show diagnostics in a floating window
+-- Note: [d and ]d are built-in Neovim 0.11+ keymaps for diagnostic navigation
+vim.keymap.set('n', 'gl', vim.diagnostic.open_float, { desc = 'Show line diagnostics' })
+vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Show diagnostic [E]rror' })
 
