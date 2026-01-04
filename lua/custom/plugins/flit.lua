@@ -6,7 +6,6 @@ return {
     labeled_modes = 'nvo',
     -- clever_repeat = true,
     multiline = true,
-    opts = {},
   },
   dependencies = {
     'ggandor/leap.nvim',
