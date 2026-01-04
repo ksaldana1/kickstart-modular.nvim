@@ -65,25 +65,7 @@ vim.keymap.set('n', '<Leader>P', '"+P', { desc = 'Paste before from system clipb
 vim.keymap.set('v', '<Leader>p', '"+p', { desc = 'Paste from system clipboard' })
 vim.keymap.set('v', '<Leader>P', '"+P', { desc = 'Paste before from system clipboard' })
 
--- Window navigation prefix
-vim.keymap.set('n', '<leader>w', '<C-w>', { desc = 'Window commands' })
-
 -- Diagnostic navigation
 vim.keymap.set('n', '[c', vim.diagnostic.goto_prev, { desc = 'Go to previous diagnostic' })
 vim.keymap.set('n', ']c', vim.diagnostic.goto_next, { desc = 'Go to next diagnostic' })
 
--- Additional Telescope shortcuts for FZF muscle memory
-local telescope_available, builtin = pcall(require, 'telescope.builtin')
-if telescope_available then
-  vim.keymap.set('n', '<leader>f', builtin.find_files, { desc = 'Find files' })
-  vim.keymap.set('n', '<leader>;', builtin.find_files, { desc = 'Find files' })
-  vim.keymap.set('n', '<leader>b', builtin.buffers, { desc = 'Find buffers' })
-  vim.keymap.set('n', '<leader>l', builtin.current_buffer_fuzzy_find, { desc = 'Find in current buffer' })
-  vim.keymap.set('n', '<leader>L', builtin.live_grep, { desc = 'Live grep all files' })
-  vim.keymap.set('n', 'rg', builtin.grep_string, { desc = 'Search word under cursor' })
-end
-
--- Format with gf
-vim.keymap.set('n', 'gf', function()
-  vim.lsp.buf.format({ async = true })
-end, { desc = 'Format buffer' })

@@ -3,16 +3,7 @@ return {
     'stevearc/conform.nvim',
     event = { 'BufWritePre' },
     cmd = { 'ConformInfo' },
-    keys = {
-      {
-        '<leader>f',
-        function()
-          require('conform').format { async = true, lsp_fallback = true }
-        end,
-        mode = '',
-        desc = '[F]ormat buffer',
-      },
-    },
+    -- Removed manual format keybind - formatting happens on save only
     opts = {
       notify_on_error = false,
       format_on_save = function(bufnr)
