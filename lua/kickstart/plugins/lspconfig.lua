@@ -234,6 +234,7 @@ return {
             if vim.lsp.config then
               -- nvim 0.11+ native config
               vim.lsp.config[server_name] = server
+              vim.lsp.enable(server_name)
             else
               -- Fallback for older nvim versions
               require('lspconfig')[server_name].setup(server)
